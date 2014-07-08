@@ -5,8 +5,8 @@
 		<Task id="consent">consent_t2.html</Task>
 		<Task id="realstart">realstartskip.htm</Task>
 		<Task id="lastpage">lastpage.html</Task> 
-		<Task id="iatc" file="racec.xml">/common/all/js/iatjs/iattaskj.jsp</Task>
-		<Task id="iatd" file="raced.xml">/common/all/js/iatjs/iattaskj.jsp</Task>
+		<Task id="racec" file="racec.xml">/common/all/js/iatjs/iattaskj.jsp</Task>
+		<Task id="raced" file="raced.xml">/common/all/js/iatjs/iattaskj.jsp</Task>
 		<Task id="questionnaire">questionnaire.jsp</Task>
 		<Task id="debriefing">debriefing_t2.jsp</Task>
 		<Task id="serial">serial_t2.html</Task>
@@ -27,8 +27,8 @@
 		<Branch type="group" id="iatpack">
 			<Task id="instructions"/>
 			<Branch type="group" select="1" id="random">
-				<Task id="iatc"/>
-				<Task id="iatd"/>
+				<Task id="racec"/>
+				<Task id="raced"/>
 			</Branch>
 		</Branch>	
 		<Task id="questionnaire"/>	
