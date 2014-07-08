@@ -1,0 +1,39 @@
+<Study id="calvin.perspective.01.t2" datagroup="research"> 
+	<Definitions>
+		<!-- Core Files -->
+		<Task id="startpage">/common/en-us/html/Instructions.jsp</Task>
+		<Task id="consent">consent_t2.html</Task>
+		<Task id="realstart">realstartskip.htm</Task>
+		<Task id="lastpage">lastpage.html</Task> 
+		<Task id="iatc" file="racec.xml">/common/all/js/iatjs/iattaskj.jsp</Task>
+		<Task id="iatd" file="raced.xml">/common/all/js/iatjs/iattaskj.jsp</Task>
+		<Task id="questionnaire">questionnaire.jsp</Task>
+		<Task id="debriefing">debriefing_t2.jsp</Task>
+		<Task id="serial">serial_t2.html</Task>
+		<Task id="romance">romance.jsp</Task>		
+
+		<!-- Instructions -->
+		<Task id="control">control.html</Task>
+		<Task id="instructions">instructions.html</Task>
+	
+	
+	</Definitions>
+	
+	<Map>
+		<Task id="startpage"/>
+		<Task id="consent"/>	
+		<Task id="realstart"/>
+		<Task id="serial"/>
+		<Branch type="group" id="iatpack">
+			<Task id="instructions"/>
+			<Branch type="group" select="1" id="random">
+				<Task id="iatc"/>
+				<Task id="iatd"/>
+			</Branch>
+		</Branch>	
+		<Task id="questionnaire"/>	
+		<Task id="romance"/>			
+		<Task id="lastpage"/>	
+		<Task id="debriefing"/>		
+	</Map>
+</Study>

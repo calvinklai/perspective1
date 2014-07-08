@@ -1,0 +1,383 @@
+<html>
+
+
+
+<head>
+ <script language="JavaScript" type="text/javascript" src="/implicit/common/en-us/js/task.js"></script>
+ 
+ <script language="Javascript">
+ 
+ // PLEASE NOTE 1:  The imgprefix line 15 would need to correspond to where the images actually end up in the perspective1 study.
+ // PLEASE NOTE 2:  Also search and replace the image folder locations right after the body tag on line 95 and beyond (this div caches the images used).
+ 
+ // folder location for face and other images
+ 
+ var imgprefix = '<img src="/implicit/user/calvin/perspective1/images/';
+  
+ var face = ['bf14','bf23','bf56','bm56','bm14','bm23a'];
+ var gender = ['f','f','f','m','m','m'];
+ var situation = [0,1,2,3,4,5];
+ var sequence = [0,1,2,3,4,5];
+ var myheaders=["PROMOTION","GETTING MARRIED","ACCIDENT","GREAT LUCK","SEEING THE FAMILY","GRADUATION"];
+ var mypassages=["This person is about to get a big promotion.","This person is getting married in the morning.","This person's spouse was just in a car accident.","This person just found a $100 bill on the ground.","This person is visiting relatives for Thanksgiving.","This person just graduated from Law School."];
+ var numimagenames = ["number-0","number-1","number-2","number-3","number-4","number-5","number-6","number-7","number-8","number-9"];
+ var indexchars="0123456789"; 
+ var numurl = new Array(10); 
+ for (var i=0;i<10;i++)   numurl[i]=imgprefix+numimagenames[i]+'.jpg">';
+ 
+ 
+ shuffle = function(o){ 
+	for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+	return o;
+};
+
+ shuffle(situation);
+ shuffle(sequence);
+
+ 
+ var images = new Array(face.length);
+ 
+ for (var i=0;i<images.length;i++) images[i] = imgprefix+face[i]+'.jpg"/>';
+ 
+ var nslide=0;
+ 
+ var times = [2,40,2,40,2,40,2,40,2,40,2,40,2,40];
+ var mydivnames = new Array(14); 
+ var curdivname;
+ 
+ var digitalclock;
+ 
+ var nextslide;
+ 
+ var countdown=40;
+ 
+ function refresh_timer() {
+  countdown--;
+  if (countdown<0) countdown=0;
+  digit1 = Math.floor(countdown/10);
+  digit2=countdown % 10;
+  timerdiv.innerHTML=numurl[digit1]+numurl[digit2];
+ }
+ 
+ 
+ function activatetimer() {
+  countdown=40;
+  timerdiv.innerHTML=numurl[4]+numurl[0];
+  if (nslide!=1) timerdiv.style.display='block';
+  digitalclock=setInterval("refresh_timer()",1000)
+  
+ }
+ 
+ 
+ function showslide(divname) {
+  nslide++;
+  divname.style.display='none';
+  if (nslide>13) {replacetextareaenters(); document.form1.submit();}
+  else {
+    curdivname=mydivnames[nslide];
+    curdivname.style.display='block';
+    if (times[nslide]>9) activatetimer(); else {clearInterval(digitalclock);timerdiv.innerHTML=''; timerdiv.style.display='none';}  
+    nextslide=setTimeout("showslide(curdivname);",times[nslide]*1000);
+   }
+ }
+ 
+ function showslide2(divname) {
+  clearInterval(digitalclock);
+  clearTimeout(nextslide);
+  nslide=2;
+  divname.style.display='none';
+  curdivname=mydivnames[nslide];
+  curdivname.style.display='block';
+  if (times[nslide]>9) activatetimer(); else {clearInterval(digitalclock);timerdiv.innerHTML=''; timerdiv.style.display='none';}  
+    setTimeout("showslide(curdivname);",times[nslide]*1000);
+ }
+ 
+ 
+ function Begin() {
+   iheader.style.display='block';
+   setTimeout("showslide(iheader);",times[nslide]*1000);
+ }
+ 
+ </script>
+ 
+<script language="JavaScript">
+   function replacetextareaenters() {
+            document.form1.slide0text.value = document.form1.slide0text.value.replace(/\n/g," ").replace(/\r/g,"");
+			document.form1.slide1text.value = document.form1.slide1text.value.replace(/\n/g," ").replace(/\r/g,"");
+            document.form1.slide2text.value = document.form1.slide2text.value.replace(/\n/g," ").replace(/\r/g,"");
+			document.form1.slide3text.value = document.form1.slide3text.value.replace(/\n/g," ").replace(/\r/g,"");
+            document.form1.slide4text.value = document.form1.slide4text.value.replace(/\n/g," ").replace(/\r/g,"");
+			document.form1.slide5text.value = document.form1.slide5text.value.replace(/\n/g," ").replace(/\r/g,"");
+
+          return true;
+      }
+</script>
+</head>
+
+
+
+<body onLoad="Begin()">
+
+  <div id="cacheimage" style='display:none'>
+   <img src="/implicit/user/calvin/perspective1/images/bf14.jpg"/>
+   <img src="/implicit/user/calvin/perspective1/images/bf23.jpg"/>
+   <img src="/implicit/user/calvin/perspective1/images/bf56.jpg"/>
+   <img src="/implicit/user/calvin/perspective1/images/bm14.jpg"/>
+   <img src="/implicit/user/calvin/perspective1/images/bm23a.jpg"/>
+   <img src="/implicit/user/calvin/perspective1/images/bm56.jpg"/>
+   <img src="/implicit/user/calvin/perspective1/images/number-0.jpg"/>
+   <img src="/implicit/user/calvin/perspective1/images/number-1.jpg"/>
+   <img src="/implicit/user/calvin/perspective1/images/number-2.jpg"/>
+   <img src="/implicit/user/calvin/perspective1/images/number-3.jpg"/>
+   <img src="/implicit/user/calvin/perspective1/images/number-4.jpg"/>
+   <img src="/implicit/user/calvin/perspective1/images/number-5.jpg"/>
+   <img src="/implicit/user/calvin/perspective1/images/number-6.jpg"/>
+   <img src="/implicit/user/calvin/perspective1/images/number-7.jpg"/>
+   <img src="/implicit/user/calvin/perspective1/images/number-8.jpg"/>
+   <img src="/implicit/user/calvin/perspective1/images/number-9.jpg"/>
+ </div>
+
+ <form method="post" action="/implicit/Study" name="form1" onSubmit="return replacetextareaenters();">
+ <input type="hidden" name="mode" value="insQuesData">
+ <input type="hidden" name="sequence1" value=".">
+ <input type="hidden" name="situation1" value=".">
+ <input type="hidden" name="sequence2" value=".">
+ <input type="hidden" name="situation2" value=".">
+ <input type="hidden" name="sequence3" value=".">
+ <input type="hidden" name="situation3" value=".">
+ <input type="hidden" name="sequence4" value=".">
+ <input type="hidden" name="situation4" value=".">
+ <input type="hidden" name="sequence5" value=".">
+ <input type="hidden" name="situation5" value=".">
+ <input type="hidden" name="sequence6" value=".">
+ <input type="hidden" name="situation6" value=".">
+ 
+ 
+ <script language="Javascript">
+  document.form1.sequence1.value= ''+sequence[0];
+  document.form1.sequence2.value= ''+sequence[1];
+  document.form1.sequence3.value= ''+sequence[2];
+  document.form1.sequence4.value= ''+sequence[3];
+  document.form1.sequence5.value= ''+sequence[4];
+  document.form1.sequence6.value= ''+sequence[5];
+  document.form1.situation1.value= ''+situation[0];
+  document.form1.situation2.value= ''+situation[1];
+  document.form1.situation3.value= ''+situation[2];
+  document.form1.situation4.value= ''+situation[3];
+  document.form1.situation5.value= ''+situation[4];
+  document.form1.situation6.value= ''+situation[5];
+ </script> 
+ 
+ 
+ 
+ 
+<div id='mysubmit' style='display:none'>
+<br /><br />
+<center> 
+<script language="JavaScript" type="text/javascript">writeButton("CONTINUE TO NEXT PAGE");</script> 
+</center>
+</div>
+
+
+<div id="iheader" style="display:none">
+  <table width="40%" align="center">
+  <tr><td style="font-size:48;font-family:Arial;" align=center>
+  <br/><br/>
+   INSTRUCTIONS
+  </td></tr>
+  </table>
+</div>
+
+<div id="header0" style="display:none">
+  <table width="40%" align="center">
+  <tr><td style="font-size:48;font-family:Arial;" align=center>
+  <br/><br/>
+  <script language="JavaScript">document.write(myheaders[situation[0]]);</script>
+  </td></tr>
+  </table>
+</div>
+<div id="header1" style="display:none">
+  <table width="40%" align="center">
+  <tr><td style="font-size:48;font-family:Arial;" align=center>
+  <br/><br/>
+  <script language="JavaScript">document.write(myheaders[situation[1]]);</script>
+  </td></tr>
+  </table>
+</div>
+<div id="header2" style="display:none">
+  <table width="40%" align="center">
+  <tr><td style="font-size:48;font-family:Arial;" align=center>
+  <br/><br/>
+  <script language="JavaScript">document.write(myheaders[situation[2]]);</script>
+  </td></tr>
+  </table>
+</div>
+<div id="header3" style="display:none">
+  <table width="40%" align="center">
+  <tr><td style="font-size:48;font-family:Arial;" align=center>
+  <br/><br/>
+  <script language="JavaScript">document.write(myheaders[situation[3]]);</script>
+  </td></tr>
+  </table>
+</div>
+<div id="header4" style="display:none">
+  <table width="40%" align="center">
+  <tr><td style="font-size:48;font-family:Arial;" align=center>
+  <br/><br/>
+  <script language="JavaScript">document.write(myheaders[situation[4]]);</script>
+  </td></tr>
+  </table>
+</div>
+<div id="header5" style="display:none">
+  <table width="40%" align="center">
+  <tr><td style="font-size:48;font-family:Arial;" align=center>
+  <br/><br/>
+  <script language="JavaScript">document.write(myheaders[situation[5]]);</script>
+  </td></tr>
+  </table>
+</div>
+
+ <div id="islide" style="display:none">
+  <table width="70%" align="center">
+  <tr><td style="font-size:28;font-family:Arial;">
+  <br/><br/><br/>
+Thank you for participating in our experiment!  In this study, you will complete a series of brief thought experiments, followed by a categorization task. <br/>
+ 
+<br/>Specifically, in the next few pages you will be shown several people along with brief descriptions of what's happening in their lives.<br/><br/>In each case, imagine that <b><i>you are this person, walking through the world in their shoes and seeing the world through their eyes</b></i>.<br/>
+ 
+ <br/>How would you, <i>as this person</i>, feel in each situation?<br/>
+ <br/>There are no right and wrong answers! For each situation, simply use the 40 seconds provided to type into the text box, as much and as vividly as possible, how you would feel if you were the person pictured.<br/><br/><br/>
+ <center> <button type="button" onClick="showslide2(islide);" style="font-size:18;font-family:Arial;" id="show5">Click to Begin</button></center>
+  </td></tr>
+  </table>
+</div>
+
+  <div id="slide0" style="display:none">
+  <table width="70%" align="center">
+  <tr><td style="font-size:28;font-family:Arial;" align=center>
+  <br/>
+    <script language="JavaScript">document.write(images[sequence[0]]);</script> <br/><br/>
+    <script language="JavaScript">document.write(mypassages[situation[0]]);</script> <br/><br/>
+      <i>Imagine you are this person: Describe how you are feeling<i><br/><br/>
+    <span align=center><textarea style="font-size:24;font-family:Arial;" name="slide0text" cols=80 rows=7></textarea></span>
+  </table>
+</div>
+
+ <div id="slide1" style="display:none">
+  <table width="70%" align="center">
+  <tr><td style="font-size:28;font-family:Arial;"  align=center>
+  <br/>
+    <script language="JavaScript">document.write(images[sequence[1]]);</script> <br/><br/>
+    <script language="JavaScript">document.write(mypassages[situation[1]]);</script> <br/><br/>
+    <i>Imagine you are this person: Describe how you are feeling<i><br/><br/>
+    <span align=center><textarea style="font-size:24;font-family:Arial;" name="slide1text" cols=80 rows=7></textarea></span>
+  </table>
+</div>
+
+<div id="slide2" style="display:none">
+  <table width="70%" align="center">
+  <tr><td style="font-size:28;font-family:Arial;" align=center>
+  <br/>
+   <script language="JavaScript">document.write(images[sequence[2]]);</script> <br/><br/>
+    <script language="JavaScript">document.write(mypassages[situation[2]]);</script> <br/><br/>
+    <i>Imagine you are this person: Describe how you are feeling<i><br/><br/>
+    <span align=center><textarea style="font-size:24;font-family:Arial;" name="slide2text" cols=80 rows=7></textarea></span>
+  </table>
+</div>
+
+<div id="slide3" style="display:none">
+  <table width="70%" align="center">
+  <tr><td style="font-size:28;font-family:Arial;" align=center>
+  <br/>
+    <script language="JavaScript">document.write(images[sequence[3]]);</script> <br/><br/>
+    <script language="JavaScript">document.write(mypassages[situation[3]]);</script> <br/><br/>
+    <i>Imagine you are this person: Describe how you are feeling<i><br/><br/>
+    <span align=center><textarea style="font-size:24;font-family:Arial;" name="slide3text" cols=80 rows=7></textarea></span>
+  </table>
+</div>
+
+
+<div id="slide4" style="display:none">
+  <table width="70%" align="center">
+  <tr><td style="font-size:28;font-family:Arial;" align=center>
+  <br/>
+    <script language="JavaScript">document.write(images[sequence[4]]);</script> <br/><br/>
+    <script language="JavaScript">document.write(mypassages[situation[4]]);</script> <br/><br/>
+    <i>Imagine you are this person: Describe how you are feeling<i><br/><br/>
+    <span align=center><textarea style="font-size:24;font-family:Arial;" name="slide4text" cols=80 rows=7></textarea></span>
+  </table>
+</div>
+
+<div id="slide5" style="display:none">
+  <table width="70%" align="center">
+  <tr><td style="font-size:28;font-family:Arial;" align=center>
+  <br/>
+    <script language="JavaScript">document.write(images[sequence[5]]);</script> <br/><br/>
+    <script language="JavaScript">document.write(mypassages[situation[5]]);</script> <br/><br/>
+     <i>Imagine you are this person: Describe how you are feeling<i><br/><br/>
+    <span align=center><textarea style="font-size:24;font-family:Arial;" name="slide5text" cols=80 rows=7></textarea></span>
+  </table>
+</div>
+
+<div id="timerdiv" style="display:none" width=20% align=right>
+ </div>
+  
+
+<script language="JavaScript">
+
+ var iheader = document.getElementById('iheader'); mydivnames[0]=iheader;
+ var header0 = document.getElementById('header0'); mydivnames[2]=header0; 
+ var header1 = document.getElementById('header1'); mydivnames[4]=header1;
+ var header2 = document.getElementById('header2'); mydivnames[6]=header2;
+ var header3 = document.getElementById('header3'); mydivnames[8]=header3; 
+ var header4 = document.getElementById('header4'); mydivnames[10]=header4;
+ var header5 = document.getElementById('header5'); mydivnames[12]=header5;
+ var islide = document.getElementById('islide');  mydivnames[1]=islide;
+ var slide0 = document.getElementById('slide0');  mydivnames[3]=slide0;
+ var slide1 = document.getElementById('slide1');  mydivnames[5]=slide1;
+ var slide2 = document.getElementById('slide2');  mydivnames[7]=slide2;
+ var slide3 = document.getElementById('slide3');  mydivnames[9]=slide3;
+ var slide4 = document.getElementById('slide4');  mydivnames[11]=slide4;
+ var slide5 = document.getElementById('slide5');  mydivnames[13]=slide5;
+ 
+ var timerdiv = document.getElementById('timerdiv');
+  
+    
+</script>
+
+
+
+<script language="JavaScript">
+var message="Context menu is disabled.";
+
+function clickIE4(){
+if (event.button==2){
+alert(message);
+return false;
+}
+}
+
+function clickNS4(e){
+if (document.layers||document.getElementById&&!document.all){
+if (e.which==2||e.which==3){
+alert(message);
+return false;
+}
+}
+}
+
+if (document.layers){
+document.captureEvents(Event.MOUSEDOWN);
+document.onmousedown=clickNS4;
+}
+else if (document.all&&!document.getElementById){
+document.onmousedown=clickIE4;
+}
+
+document.oncontextmenu=new Function("alert(message);return false")
+</script>
+
+</form>
+</body>
+
+</html>

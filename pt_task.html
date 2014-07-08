@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>Project Implicit</title>
+
+<style type="text/css">
+
+	body { background-color: #ffffff; padding: 0px; margin: 0px; font-size: 25px;}
+
+	.text { font-family: arial; font-size: 23px; color: #000000; }
+
+	.hi { background-color: #eaf1dc; }
+
+	.lo { background-color: #f0f4ea; }
+
+	h1 { font-family: arial; font-size: 150%; padding: 0px; margin: 0px; }
+
+	h2 { font-family: arial; font-size: 150%; font-weight: normal; padding: 0px; margin: 0px; }
+
+</style>
+
+<script language="JavaScript" type="text/javascript" src="/implicit/common/en-us/js/task.js"></script></head>
+    <script type="text/javascript">
+     function textprocess(field, maxlen) {
+       if (field.value.length > maxlen)
+         field.value = field.value.substring(0, maxlen); // truncate the field to maxlen chars
+       field.value = field.value.replace(/ /g,"_"); // replace spaces by underscores, g is for global replace, remove or comment this line if you dont want replace.
+       } 
+     var nnag=0;
+     function donag() {
+        nnag++;
+        var allanswered=true; var minlen=150;
+        if (document.form1.pt_task.value.length<minlen) allanswered=false;  if (document.form1.pt_task.value.length==0) document.form1.pt_task.value = ".";
+        if (!allanswered && nnag<=1) alert("It would be ideal if you were to spend more time writing your essay before continuing.");
+          else document.form1.submit();
+       }
+    </script>
+<body>
+    <form method="post" action="/implicit/Study" name="form1">
+      <input type="hidden" name="mode" value="insQuesData" />
+  <table width="70%" align="center">
+  <tr><td style="font-size:20;font-family:Arial;">
+<center><img src="/implicit/user/calvin/perspective1/images/pt_black.png"></center><br>
+Using the space provided, please compose a brief essay about a day in the life of the person in the photograph. <br/>
+  <br/>As you&#8217;re writing, we ask that you take this person&#8217;s perspective. In your mind&#8217;s eye, visualize clearly and vividly what (s)he might be thinking, feeling, and experiencing as (s)he goes through the day. <br/>
+ <br/>Please spend about 5 minutes writing your essay while taking this person&#8217;s perspective, and click &#8217;Continue&#8217; whenever you&#8217;ve finished or are ready to move on to the next task.<br/>
+
+  </td></tr>
+   <tr>
+    <td>  
+
+       <p><center><textarea class="inputtext" name="pt_task" rows="10" cols="100" onkeyup="textprocess(this, 500);"></textarea></center></p>
+    </td>
+  </tr>
+<tr>
+           <td><center><p class="textcenter"><button type="button" class="fakebutton" onclick="donag();">Continue</button></p></center></td>
+</tr>
+ <br/><br/>
+  </table>
+     <div id='mybutton' style='display:none'><script language="JavaScript" type="text/javascript">writeButton("real hidden button");</script></div>
+</body>
+
+</html>
