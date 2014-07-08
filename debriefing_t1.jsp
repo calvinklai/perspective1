@@ -205,7 +205,9 @@ a.menlnk:hover
 		about this research and follow the links to the questions of specific interest to you.</p>
 	<p class="text">Thanks again for your participation.</p>
 	<p class="text">If you have any questions about this study please email the lead investigator, Calvin Lai (<a href="mailto:ckl5ae@virginia.edu">ckl5ae@virginia.edu</a>).</p>
-	
+	<p><strong>Whom to contact about your rights in the study:</strong><br />
+Tonya Moon, Chairman, Institutional Review Board for the Social and Behavioral Sciences, One Morton Dr Suite 500 University of Virginia, P.O. Box 800392, Charlottesville, VA 22908-0392
+<br />Telephone: (434) 924-5999; Email: irbsbshelp@virginia.edu; Website: www.virginia.edu/vprgs/irb </p>	
 	<p class="text">Please click <a href="javascript:window.print()" onMouseover="return status='Print this page'" onMouseout="return status=''">here</a> to print this page.</p>
 	
 	</td>
