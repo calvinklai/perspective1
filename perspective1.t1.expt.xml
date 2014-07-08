@@ -1,4 +1,4 @@
-<Study id="calvin.perspective.01.t1" datagroup="research"> 
+<Study id="calvin.perspective1.t1" datagroup="research"> 
 	<Definitions>
 		<!-- Core Files -->
 		<Task id="startpage">/common/en-us/html/Instructions.jsp</Task>
